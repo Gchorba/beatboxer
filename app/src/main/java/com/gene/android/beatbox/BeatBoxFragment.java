@@ -35,11 +35,15 @@ public class BeatBoxFragment extends Fragment {
 
         return binding.getRoot();
     }
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mBeatBox.release();
+    }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setRetainInstance(true);
         mBeatBox = new BeatBox(getActivity());
     }
 
